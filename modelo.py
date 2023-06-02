@@ -44,14 +44,35 @@ class Serie(Show):
         return f"Name: {self._name} | Likes: {self._likes} | Seasons: {self.seasons}"
 
 
+class Playlist:
+    def __init__(self, name, shows):
+        self.name = name
+        self._shows = shows
+
+    @property
+    def shows(self):
+        return self._shows
+
+    @property
+    def size(self):
+        return len(self._shows)
+
+
 if __name__ == '__main__':
     fast_x = Movie("Fast X", 2023, 130)
     fast_x.give_like()
+
+    home_alone = Movie("Home Alone", 1994, 100)
+    home_alone.give_like()
 
     the_chosen = Serie("The Chosen", 2016, 5)
     the_chosen.give_like()
     the_chosen.give_like()
 
-    movies_and_series = [fast_x, the_chosen]
+    sherlock = Serie("Sherlock", 2014, 4)
+
+    movies_and_series = [fast_x, the_chosen, home_alone, sherlock]
+    weekend_playlist = Playlist("Playlist for the weekend", movies_and_series)
+
     for show in movies_and_series:
         print(show)
