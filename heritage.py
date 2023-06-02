@@ -53,9 +53,11 @@ class Playlist:
     def shows(self):
         return self._shows
 
-    @property
-    def size(self):
+    def __len__(self):
         return len(self._shows)
+
+    def __getitem__(self, item):
+        return self._shows[item]
 
 
 if __name__ == '__main__':
