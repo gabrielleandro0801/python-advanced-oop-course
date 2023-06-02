@@ -1,42 +1,37 @@
-class Movie:
+class Show:
+    def __init__(self, name, year):
+        self._name = name.title()
+        self.year = year
+        self._likes = 0
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        self._name = name.title()
+
+    def give_like(self):
+        self._likes += 1
+
+
+class Movie(Show):
     def __init__(self, name, year, duration):
-        self.__name = name.title()
-        self.year = year
+        super().__init__(name, year)
         self.duration = duration
-        self.__likes = 0
-
-    @property
-    def name(self):
-        return self.__name
-
-    @name.setter
-    def name(self, name):
-        self.__name = name.title()
 
     def give_like(self):
-        self.__likes += 1
+        self._likes += 1
 
 
-class Serie:
+class Serie(Show):
     def __init__(self, name, year, seasons):
-        self.__name = name.title()
-        self.year = year
+        super().__init__(name, year)
         self.seasons = seasons
-        self.__likes = 0
-
-    @property
-    def name(self):
-        return self.__name
-
-    @name.setter
-    def name(self, name):
-        self.__name = name.title()
-
-    def give_like(self):
-        self.__likes += 1
 
 
 if __name__ == '__main__':
-    fast_x = Movie("Fast X", 2023, 140)
+    fast_x = Movie("Fast X", 2023, 130)
     fast_x.give_like()
     print(fast_x)
